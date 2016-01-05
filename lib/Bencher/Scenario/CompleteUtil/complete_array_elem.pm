@@ -8,6 +8,7 @@ use strict;
 use warnings;
 
 our $scenario = {
+    summary => 'Benchmark complete_array_elem()',
     modules => {
         'Complete::Util' => 0.45,
         'Text::Levenshtein::XS' => 0,
@@ -193,6 +194,4 @@ our $scenario = {
 };
 
 1;
-# ABSTRACT: Benchmark complete_array_elem()
-
-=head1 SYNOPSIS
+# ABSTRACT:
