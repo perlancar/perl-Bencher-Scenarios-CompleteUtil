@@ -10,8 +10,8 @@ use warnings;
 our $scenario = {
     summary => 'Benchmark complete_array_elem()',
     modules => {
-        'Complete::Util' => 0.45,
-        'Text::Levenshtein::XS' => 0,
+        'Complete::Util' => {version=>0.45},
+        'Text::Levenshtein::XS' => {version=>0},
     },
     participants => [
         {
