@@ -12,6 +12,7 @@ our $scenario = {
     modules => {
         'Complete::Util' => {version=>0.45},
         'Text::Levenshtein::XS' => {version=>0},
+        'Text::Levenshtein::Flexible' => {version=>0},
     },
     participants => [
         {
@@ -134,6 +135,31 @@ our $scenario = {
                 local $Complete::Common::OPT_CHAR_MODE = 0;
                 undef $Complete::Util::code_editdist;
                 local $ENV{COMPLETE_UTIL_LEVENSHTEIN} = 'xs';
+                Complete::Util::complete_array_elem(
+                    word  => 'jjjjkjjjjjjj',
+                    array => $ary,
+                );
+            },
+        },
+        {
+            name => 'fuzzy-flex-1000',
+            code => sub {
+                state $ary = do {
+                    require Complete::Util;
+                    my $ary = [];
+                    for my $l1 ('a'..'j') {
+                        for my $l2 ('a'..'j') {
+                            for my $l3 ('a'..'j') {
+                                push @$ary, ($l1 x 4).($l2 x 4).($l3 x 4); # 12char
+                            }
+                        }
+                    }
+                    $ary;
+                };
+                local $Complete::Common::OPT_WORD_MODE = 0;
+                local $Complete::Common::OPT_CHAR_MODE = 0;
+                undef $Complete::Util::code_editdist;
+                local $ENV{COMPLETE_UTIL_LEVENSHTEIN} = 'flexible';
                 Complete::Util::complete_array_elem(
                     word  => 'jjjjkjjjjjjj',
                     array => $ary,
