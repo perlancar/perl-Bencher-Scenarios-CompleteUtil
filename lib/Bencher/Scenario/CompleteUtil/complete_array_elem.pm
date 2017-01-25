@@ -10,7 +10,7 @@ use warnings;
 our $scenario = {
     summary => 'Benchmark complete_array_elem()',
     modules => {
-        'Complete::Util' => {version=>0.45},
+        'Complete::Util' => {version=>0.57},
         'Text::Levenshtein::XS' => {version=>0},
         'Text::Levenshtein::Flexible' => {version=>0},
     },
